@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2041
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvoicingSystem", "InvoicingSystem\InvoicingSystem.csproj", "{816F7F1B-BF78-4A4A-83D5-FD59C1495367}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvoicingSystemTests", "InvoicingSystemTests\InvoicingSystemTests.csproj", "{9189F468-5857-4854-B27D-B5BABBC6C841}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{816F7F1B-BF78-4A4A-83D5-FD59C1495367}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{816F7F1B-BF78-4A4A-83D5-FD59C1495367}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{816F7F1B-BF78-4A4A-83D5-FD59C1495367}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{816F7F1B-BF78-4A4A-83D5-FD59C1495367}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9189F468-5857-4854-B27D-B5BABBC6C841}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9189F468-5857-4854-B27D-B5BABBC6C841}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9189F468-5857-4854-B27D-B5BABBC6C841}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9189F468-5857-4854-B27D-B5BABBC6C841}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8EDA2037-10EF-49C4-8CFA-7881CEB6F671}
+	EndGlobalSection
+EndGlobal

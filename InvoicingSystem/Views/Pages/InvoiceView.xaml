@@ -1,0 +1,262 @@
+﻿<Page x:Class="InvoicingSystem.Views.Pages.InvoiceView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:InvoicingSystem.Views.Pages"
+      xmlns:system="clr-namespace:System;assembly=mscorlib"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="400"
+      Title="InvoiceView" Background="White" ShowsNavigationUI="False">
+
+    <!--VARIABLES-->
+    <Page.Resources>
+        <system:Double x:Key="minFieldWidth">100</system:Double>
+        <system:Double x:Key="txtboxCorporationNameWidth">287</system:Double>
+        <Thickness x:Key="vboxMargin" Left="10" Top="0" Right="10" Bottom="0"/>
+        <Thickness x:Key="stkMargin"  Left="0" Top="2.725" Right="0" Bottom="2.725"/>
+    </Page.Resources>
+
+    <Grid ShowGridLines="False">
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".2*"/>
+            <RowDefinition Height=".5*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height=".2*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="0.5*"/>
+        </Grid.ColumnDefinitions>
+
+        <!--INVOICE NUMBER SECTION-->
+        <Viewbox x:Name="vboxInvoiceNum" Grid.Column="2" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,0,10,0">
+            <StackPanel x:Name="stkInvoiceNum" Orientation="Horizontal">
+                <Label x:Name="lblInvoiceNumCaption" Content="Číslo faktury: " Margin="0" />
+                <TextBlock x:Name="txtblckInvoiceNum" Text="20180011" Margin="0, 5.45, 0, 0"/>
+            </StackPanel>
+        </Viewbox>
+        <!--END OF INVOICE NUMBER SECTION-->
+
+        <!--CONTRACTOR SECTION-->
+        <Viewbox x:Name="vboxContractor" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="1" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="{StaticResource vboxMargin}">
+            <StackPanel x:Name="stkContractor" Orientation="Vertical">
+                <Label x:Name="lblContractor" Content="Dodavatel" FontWeight="Bold"/>
+                <!--CONTRACTOR NAME-->
+                <StackPanel x:Name="stkContractorName" Orientation="Horizontal" >
+                    <Label Content="Vaše jméno: "/>
+                    <TextBox x:Name="txtContractorFirstName" Text="" Margin="0, 5.45, 0, 0" MinWidth="{StaticResource minFieldWidth}"/>
+
+                    <Label Content="Vaše příjmení: "/>
+                    <TextBox x:Name="txtContractorLastName" Text="" Margin="0, 5.45, 0, 0" MinWidth="{StaticResource minFieldWidth}"/>
+                </StackPanel>
+                <!--END OF CONTRACTOR NAME-->
+
+                <!--CONTRACTOR STREET & BUILDING NUMBER-->
+                <StackPanel x:Name="stkContractorStreetAndBuildingNumber" Orientation="Horizontal">
+                    <!--CONTRACTOR STREET-->
+                    <Label Content="Ulice: "/>
+                    <TextBox x:Name="txtContractorStreet" Text="" Margin="35, 5.45, 0, 0" MinWidth="{StaticResource minFieldWidth}"/>
+                    <!--END OF CONTRACTOR STREET-->
+
+                    <!--CONTRACTOR BUILDING NUMBER-->
+                    <Label Content="Číslo popisné: "/>
+                    <TextBox x:Name="txtContractorBuildingNumber" Text="" Margin="0, 5.45, 0, 0" MinWidth="{StaticResource minFieldWidth}"/>
+                    <!--END OF CONTRACTOR BUILDING NUMBER-->
+                </StackPanel>
+                <!--END OF CONTRACTOR STREET & BUILDING NUMBER-->
+
+                <!--CONTRACTOR ZIPCODE & CITY-->
+                <StackPanel x:Name="stkContractorCityAndZipcode" Orientation="Horizontal" >
+                    <!--CONTRACTOR ZIPCODE-->
+                    <Label Content="PSČ: "/>
+                    <TextBox x:Name="txtContractorZipcode" Text="" Margin="41, 5.45, 0, 0" MinWidth="{StaticResource minFieldWidth}"/>
+                    <!--END OF CONTRACTOR ZIPCODE-->
+
+                    <!--CONTRACTOR CITY-->
+                    <Label Content="Město: "/>
+                    <TextBox x:Name="txtContractorCity" Text="" Margin="38, 5.45, 0, 0" MinWidth="{StaticResource minFieldWidth}"/>
+                    <!--END OF CONTRACTOR CITY-->
+                </StackPanel>
+                <!--END OF CONTRACTOR CITY & ZIPCODE-->
+
+                <!--CONTRACTOR IDENTIFICATION NUMBER & VAT PAYER-->
+                <StackPanel x:Name="stkContractorIN" Orientation="Horizontal" >
+                    <!--CONTRACTOR IDENTIFICATION NUMBER-->
+                    <Label Content="IČ: "/>
+                    <TextBox x:Name="txtIN" Text="" Margin="50, 5.45, 0, 0" MinWidth="{StaticResource minFieldWidth}"/>
+                    <!--END OF CONTRACTOR IDENTIFICATION NUMBER-->
+
+                    <!--CONTRACTOR VAT PAYER-->
+                    <Label Content="Plátce DPH: "/>
+                    <ComboBox x:Name="comboVATPayer" MinWidth="{StaticResource minFieldWidth}" Margin="13, 5, 0, 0"/>
+                    <!--END OF CONTRACTOR VAT PAYER-->
+                </StackPanel>
+                <!--END OF CONTRACTOR IDENTIFICATION NUMBER & VAT PAYER-->
+
+                <!--CONTRACTOR CITY OF EVIDENCE-->
+                <StackPanel x:Name="stkContractorCityOfEvidenceInformation" Orientation="Horizontal" Margin="0,10,0,0">
+                    <TextBlock Text="Podnikatel zapsán v živ. rejstříku MÚ "/>
+                    <TextBox x:Name="txtContractorCityOfEvidence" Text="" Margin="0, 0, 0, 0" MinWidth="{StaticResource minFieldWidth}"/>
+                </StackPanel>
+                <!--END OF CONTRACTOR CITY OF EVIDENCE-->
+            </StackPanel>
+        </Viewbox>
+        <!--END OF CONTRACTOR SECTION-->
+
+        <!--CUSTOMER SECTION-->
+        <Viewbox x:Name="vboxCustomer" Grid.Column="2" Grid.Row="2" VerticalAlignment="Top" Margin="0,0,0,0">
+            <StackPanel x:Name="stkCustomer" Orientation="Vertical">
+                <Label x:Name="lblCustomer" Content="Odběratel" FontWeight="Bold"/>
+                <!--CUSTOMER NAME-->
+                <StackPanel x:Name="stkCustomerName" Orientation="Horizontal">
+                    <Label Content="Název společnosti: "/>
+                    <TextBox x:Name="txtCustomerName" MinWidth="{StaticResource txtboxCorporationNameWidth}" Margin="0, 5.45, 2, 0"/>
+                </StackPanel>
+                <!--END OF CUSTOMER NAME-->
+
+                <!--CUSTOMER STREET & BUILDING NUMBER-->
+                <StackPanel x:Name="stkCustomerStreetAndBuildingNumber" Orientation="Horizontal">
+                    <!--CUSTOMER STREET-->
+                    <Label Content="Ulice: "/>
+                    <TextBox x:Name="txtCustomerStreet" MinWidth="{StaticResource minFieldWidth}" Margin="69,5.45,0,0"/>
+                    <!--END OF CUSTOMER STREET-->
+
+                    <!--CUSTOMER BUILDING NUMBER-->
+                    <Label Content="Číslo popisné: "/>
+                    <TextBox x:Name="txtCustomerBuildingNumber" MinWidth="{StaticResource minFieldWidth}" Margin="0,5.45,0,0"/>
+                    <!--END OF CUSTOMER BUILDING NUMBER-->
+                </StackPanel>
+                <!--END OF CUSTOMER STREET AND BUILDING NUMBER-->
+
+                <!--CUSTOMER ZIPCODE & CITY-->
+                <StackPanel x:Name="stkCustomerZipcodeAndCity" Orientation="Horizontal">
+                    <!--CUSTOMER ZIPCODE-->
+                    <Label Content="PSČ: "/>
+                    <TextBox x:Name="txtCustomerZipcode" MinWidth="{StaticResource minFieldWidth}" Margin="75,5.45,0,0" />
+                    <!--END OF CUSTOMER ZIPCODE-->
+
+                    <!--CUSTOMER CITY-->
+                    <Label Content="Město: "/>
+                    <TextBox x:Name="txtCustomerCity" MinWidth="{StaticResource minFieldWidth}" Margin="37,5.45,0,0"/>
+                    <!--END OF CUSTOMER CITY-->
+                </StackPanel>
+                <!--END OF CUSTOMER ZIPCODE & CITY-->
+
+                <!--CUSTOMER IN & VATIN-->
+                <StackPanel x:Name="stkCustomerInAndVatin" Orientation="Horizontal" >
+                    <!--CUSTOMER IN-->
+                    <Label Content="IČ: "/>
+                    <TextBox x:Name="txtCustomerIn" MinWidth="{StaticResource minFieldWidth}" Margin="85,5.45,0,0"/>
+                    <!--END OF CUSTOMER IN-->
+
+                    <!--CUSTOMER VATIN-->
+                    <Label Content="DIČ: "/>
+                    <TextBox x:Name="txtCustomerVatin" MinWidth="{StaticResource minFieldWidth}" Margin="51,5.45,0,0"/>
+                    <!--END OF CUSTOMER VATIN-->
+                </StackPanel>
+                <!--END OF CUSTOMER IN & VATIN-->
+            </StackPanel>
+        </Viewbox>
+        <!--END OF CUSTOMER SECTION-->
+
+        <!--PAYMENT CONDITION SECTION-->
+        <Viewbox x:Name="vboxPaymentCondition" Grid.Column="1" Grid.Row="3"  VerticalAlignment="Top" HorizontalAlignment="Left" Margin="{StaticResource vboxMargin}">
+            <StackPanel x:Name="stkPaymentCondition" Orientation="Vertical">
+                <Label Content="Platební podmínky: " FontWeight="Bold"/>
+                <!--PAYMENT METHOD-->
+                <StackPanel x:Name="stkPaymentMethodAndDateOfIssue" Orientation="Horizontal" Margin="{StaticResource stkMargin}">
+                    <!--PAYMENT METHOD-->
+                    <Label Content="Forma úhrady: "/>
+                    <ComboBox x:Name="comboPaymentCondition" MinWidth="{StaticResource minFieldWidth}" Margin="16,0,0,0"/>
+                    <!--END OF PAYMENT METHOD-->
+                </StackPanel>
+                <!--END OF PAYMENT METHOD-->
+
+                <!--BANK CONNECTION-->
+                <StackPanel x:Name="stkBankConnectionAndDueDate" Orientation="Horizontal">
+                    <!--BANK CONNECTION-->
+                    <Label Content="Bankovní spojení: "/>
+                    <TextBox x:Name="txtBankConnection" MinWidth="{StaticResource minFieldWidth}"/>
+                    <!--END OF BANK CONNECTION-->
+                </StackPanel>
+                <!--END OF BANK CONNECTION-->
+
+                <!--BANK ACCOUNT NUMBER-->
+                <StackPanel x:Name="stkBankAccount" Orientation="Horizontal" Margin="{StaticResource stkMargin}">
+                    <Label Content="Číslo účtu: "/>
+                    <TextBox x:Name="txtBankAccount" MinWidth="{StaticResource minFieldWidth}" Margin="37,0,0,0"/>
+                </StackPanel>
+                <!--END OF BANK ACCOUNT NUMBER-->
+
+                <!--VARIABLE SYMBOL-->
+                <StackPanel x:Name="stkVariableSymbol" Orientation="Horizontal">
+                    <Label Content="Variabilní symbol: "/>
+                    <TextBox x:Name="txtVariableSymbol" MinWidth="{StaticResource minFieldWidth}" Margin="-1,0,0,0"/>
+                </StackPanel>
+                <!--END OF VARIABLE SYMBOL-->
+            </StackPanel>
+        </Viewbox>
+        <!--END OF PAYMENT CONDITION SECTION-->
+        
+        <!--DATES SECTION-->
+        <Viewbox x:Name="vboxDates" Grid.Column="2" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,-14,50,0">
+            <StackPanel x:Name="stkDates" Orientation="Vertical" Grid.Column="1" Grid.Row="2">
+                <StackPanel x:Name="stkDateOfIssue" Orientation="Horizontal" Margin="{StaticResource stkMargin}">
+                    <!--DATE OF ISSUE-->
+                    <Label Content="Datum vystavení: "/>
+                    <DatePicker x:Name="dtpDateOfIssue" MinWidth="{StaticResource minFieldWidth}" Margin="3,0,0,0"/>
+                    <!--END OF DATE OF ISSUE-->
+                </StackPanel>
+
+                <StackPanel x:Name="stkDueDate" Orientation="Horizontal">
+                    <!--DUE DATE-->
+                    <Label Content="Datum splatnosti: " />
+                    <DatePicker x:Name="dtpDueDate" MinWidth="{StaticResource minFieldWidth}"/>
+                    <!--END OF DUE DATE-->
+                </StackPanel>
+            </StackPanel>
+        </Viewbox>
+        <!--END OF DATES SECTION-->
+        
+        <!--JOB DESCRIPTION SECTION-->
+        <Viewbox x:Name="vboxJobDescription" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="{StaticResource vboxMargin}">
+            <StackPanel x:Name="stkJobDescription" Orientation="Vertical" Margin="{StaticResource stkMargin}">
+                <Label Content="Fakturujeme vám: " FontWeight="Bold"/>
+                <TextBox x:Name="txtJobDescription" MinWidth="300" MaxWidth="300" MinHeight="50" MaxHeight="50" TextWrapping="Wrap"/>
+            </StackPanel>
+        </Viewbox>
+        <!--END OF JOB DESCRIPTION SECTION-->
+
+        <!--PRICE SECTION-->
+        <Viewbox x:Name="vboxPrice" Grid.Column="2" Grid.Row="5" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="{StaticResource vboxMargin}">
+            <StackPanel x:Name="stkPrice" Orientation="Horizontal" Margin="40,10,0,10">
+                <Label Content="Celkem: "/>
+                <TextBox x:Name="txtPrice" MinWidth="{StaticResource minFieldWidth}" />
+            </StackPanel>
+        </Viewbox>
+        <!--END OF PRICE SECTION-->
+
+        <!--SIGNATURE SECTION-->
+        <Viewbox x:Name="vboxSignature" Grid.Column="2" Grid.Row="6" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="{StaticResource vboxMargin}">
+            <StackPanel x:Name="stkSignature" Orientation="Vertical" Margin="{StaticResource stkMargin}">
+                <StackPanel x:Name="stkSignatureName" Orientation="Horizontal">
+                    <Label Content="Vystavil: " FontWeight="Bold"/>
+                    <Label x:Name="lblSignatureName" FontWeight="Bold" Content="Jiří Kocourek"/>
+                </StackPanel>
+
+                <Label Content="Podpis: " />
+            </StackPanel>
+        </Viewbox>
+        <!--END OF SIGNATURE SECTION-->
+
+        <!--<Border x:Name="borderInvoiceNum" Grid.Row="0" Grid.Column="1" BorderThickness="1, 1 ,1 ,0" BorderBrush="Black"/>
+        <Border x:Name="borderInvoiceBody" Grid.Row="1" Grid.Column="0" BorderThickness="1, 1 ,1 ,1" BorderBrush="Black"/>-->
+    </Grid>
+</Page>
