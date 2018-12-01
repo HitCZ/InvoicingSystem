@@ -1,19 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace InvoicingSystem.Models {
-    public abstract class Enterprenour {
+namespace InvoicingSystem.Models
+{
+    // ReSharper disable once IdentifierTypo
+    public abstract class Enterprenour
+    {
+        #region Properties
+
         public int Id { get; set; }
         public int IdAddress { get; set; }
         [ForeignKey("IdAddress")]
         public virtual Address Address { get; set; }
         // Identification number - 'IČO'
+        // ReSharper disable once InconsistentNaming
         public int IN { get; set; }
+        // ReSharper disable once CommentTypo
         // Value added tax identification number - 'DIČO'
+        // ReSharper disable once IdentifierTypo
+        // ReSharper disable once InconsistentNaming
         public string VATIN { get; set; }
+
+        #endregion Properties
     }
 }

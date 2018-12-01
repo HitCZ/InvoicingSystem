@@ -1,25 +1,27 @@
-﻿using InvoicingSystem.Enumerations;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
-using InvoicingSystem.Data.Extensions;
 using System.ComponentModel.DataAnnotations;
+using InvoicingSystem.Logic.Constants;
+using InvoicingSystem.Logic.Enumerations;
+using InvoicingSystem.Logic.Extensions;
 
-namespace InvoicingSystem.Models {
-    public class PaymentCondition {
+namespace InvoicingSystem.Models
+{
+    public class PaymentCondition
+    {
+        #region Properties
+
         public int Id { get; set; }
         [NotMapped]
         [Required]
         public PaymentMethod PaymentMethod { get; set; }
 
         [Column("PaymentMethod")]
-        public string PaymentMethodString {
-            get {
-                if (PaymentMethod == PaymentMethod.BankTransfer)
-                    return "Převodem";
-                else
-                    return "Hotově";
-            }
-            set { PaymentMethod = value.ParseEnum<PaymentMethod>(); }
+        public string PaymentMethodString
+        {
+            get => PaymentMethod is PaymentMethod.BankTransfer
+                ? Strings.PAYMENT_METHOD_TRANSFER : Strings.PAYMENT_METHOD_CASH;
+            set => PaymentMethod = value.ParseEnum<PaymentMethod>();
         }
 
         public string BankConnection { get; set; } = string.Empty;
@@ -30,8 +32,15 @@ namespace InvoicingSystem.Models {
         [Required]
         public DateTime DueDate { get; set; }
 
-        public override string ToString() {
+        #endregion Properties
+
+        #region Overriden Methods
+
+        public override string ToString()
+        {
             return PaymentMethodString;
         }
+
+        #endregion
     }
 }

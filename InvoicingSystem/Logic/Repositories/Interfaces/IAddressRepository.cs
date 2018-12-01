@@ -1,7 +1,7 @@
-﻿using InvoicingSystem.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using InvoicingSystem.Models;
 
-namespace InvoicingSystem.Data.Repositories.Interfaces {
+namespace InvoicingSystem.Logic.Repositories.Interfaces {
     public interface IAddressRepository : IRepository<Address> {
 
         IEnumerable<Address> GetAddressesByCity(string city, IEnumerable<Address> addresses = null);

@@ -1,7 +1,7 @@
-﻿using InvoicingSystem.Data.Repositories.Interfaces;
-using System;
+﻿using System;
+using InvoicingSystem.Logic.Repositories.Interfaces;
 
-namespace InvoicingSystem.Data {
+namespace InvoicingSystem.Logic.Interfaces {
     interface IUnitOfWork : IDisposable{
         IAddressRepository Addresses { get; }
         IContractorRepository Contractors { get; }

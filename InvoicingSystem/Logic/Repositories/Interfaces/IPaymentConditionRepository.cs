@@ -1,9 +1,9 @@
-﻿using InvoicingSystem.Enumerations;
-using InvoicingSystem.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using InvoicingSystem.Logic.Enumerations;
+using InvoicingSystem.Models;
 
-namespace InvoicingSystem.Data.Repositories.Interfaces {
+namespace InvoicingSystem.Logic.Repositories.Interfaces {
     public interface IPaymentConditionRepository : IRepository<PaymentCondition> {
         IEnumerable<PaymentCondition> GetConditionsByPaymentMethod(PaymentMethod method, IEnumerable<PaymentCondition> conditions = null);
         IEnumerable<PaymentCondition> GetConditionsByBankConnection(string connection, IEnumerable<PaymentCondition> conditions = null);

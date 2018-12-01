@@ -1,25 +1,19 @@
-﻿using InvoicingSystem.Data.Repositories.Interfaces;
-using InvoicingSystem.Enumerations;
-using InvoicingSystem.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using InvoicingSystem.Logic.Enumerations;
+using InvoicingSystem.Logic.Repositories.Interfaces;
+using InvoicingSystem.Models;
 
-namespace InvoicingSystem.Data.Repositories {
+namespace InvoicingSystem.Logic.Repositories {
     public class PaymentConditionRepository : Repository<PaymentCondition>, IPaymentConditionRepository {
-        private readonly IEnumerable<PaymentCondition> allConditions;
 
         public PaymentConditionRepository(DbContext context) : base(context) {
-            allConditions = AppDbContext.PaymentConditions;
         }
 
-        public AppDbContext AppDbContext {
-            get {
-                return _context as AppDbContext;
-            }
-        }
-        
+        public AppDbContext AppDbContext => Context as AppDbContext;
+
         public IEnumerable<PaymentCondition> GetConditionsAfterDueDate(DateTime date, IEnumerable<PaymentCondition> filteredConditions = null) {
             return GetCorrectSet(filteredConditions)
                    .Where(p => p.DueDate > date).ToList();

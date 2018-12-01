@@ -1,12 +1,8 @@
-﻿using InvoicingSystem.Models;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.Entity;
+using InvoicingSystem.Models;
 
-namespace InvoicingSystem.Data {
+namespace InvoicingSystem.Logic
+{
     public class AppDbContext : DbContext {
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Contractor> Contractors { get; set; }

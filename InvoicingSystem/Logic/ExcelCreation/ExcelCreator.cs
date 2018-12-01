@@ -2,19 +2,19 @@
 using InvoicingSystem.Models;
 using OfficeOpenXml;
 using OfficeOpenXml.Style;
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 
 namespace InvoicingSystem.Logic.ExcelCreation
 {
     class ExcelCreator
     {
+        #region Fields
+
         private const string WORKSHEET_NAME = Strings.WORKSHEET_NAME;
         private const string PATH = "test.xlsx";
-        private const string FONT_NAME = Strings.FONT;
-        private const float FONT_SIZE = 11f;
+        //private const string FONT_NAME = Strings.FONT;
+        //private const float FONT_SIZE = 11f;
         private PaymentCondition paymentCondition;
         /// <summary>
         ///  ((hint, position) value)
@@ -24,18 +24,27 @@ namespace InvoicingSystem.Logic.ExcelCreation
         private Contractor contractor;
         private Customer customer;
 
+        #endregion Fields
+
+        #region Constructor
+
         public ExcelCreator()
         {
             coordsAndValues
                 = new Dictionary<KeyValuePair<string, string>, string>();
         }
 
+        #endregion Constructor
+
+        #region Public Methods
+
+        // ReSharper disable once ParameterHidesMember
         public void CreateExcel(Invoice invoice)
         {
             this.invoice = invoice;
-            this.contractor = invoice.Contractor;
-            this.customer = invoice.Customer;
-            this.paymentCondition = invoice.PaymentCondition;
+            contractor = invoice.Contractor;
+            customer = invoice.Customer;
+            paymentCondition = invoice.PaymentCondition;
             InitDictionary();
 
             var excelFile = new FileInfo(PATH);
@@ -49,6 +58,11 @@ namespace InvoicingSystem.Logic.ExcelCreation
                 excel.SaveAs(excelFile);
             }
         }
+
+        #endregion Public Methods
+
+        #region Private Methods
+
         /// <summary>
         /// Initializes values for the entire excel document.
         /// </summary>
@@ -97,7 +111,7 @@ namespace InvoicingSystem.Logic.ExcelCreation
                 "contractorIN", "C11"), $"{Strings.IN_CAPTION}: {contractor.IN}");
 
             // Is contractor a VAT payer??
-            var isVatPayerString 
+            var isVatPayerString
                 = contractor.IsVatPayer ? Strings.CONTRACTOR_VAT_PAYER : Strings.CONTRACTOR_NOT_A_VAT_PAYER;
 
             coordsAndValues.Add(new KeyValuePair<string, string>("contractorVATPayer", "C12"), isVatPayerString);
@@ -195,7 +209,7 @@ namespace InvoicingSystem.Logic.ExcelCreation
         private void FillSignatureInfo()
         {
             coordsAndValues.Add(new KeyValuePair<string, string>("signatureCaption", "G39"),
-                $"{Strings.SIGNATURE_CAPTION} {contractor.ToString()}");
+                $"{Strings.SIGNATURE_CAPTION} {contractor}");
 
             coordsAndValues.Add(new KeyValuePair<string, string>("signature", "G40"), Strings.SIGNATURE);
         }
@@ -229,19 +243,19 @@ namespace InvoicingSystem.Logic.ExcelCreation
 
         //}
 
-        private IEnumerable<KeyValuePair<string, string>> FilterContent(List<string> cellNames)
-        {
-            var list = new List<KeyValuePair<string, string>>();
+        //private IEnumerable<KeyValuePair<string, string>> FilterContent(List<string> cellNames)
+        //{
+        //    var list = new List<KeyValuePair<string, string>>();
 
-            foreach (var name in cellNames)
-            {
-                var record = coordsAndValues.FirstOrDefault(
-                    c => c.Key.Key.Equals(name, StringComparison.OrdinalIgnoreCase)).Key;
-                list.Add(new KeyValuePair<string, string>(record.Key, record.Value));
-            }
+        //    foreach (var name in cellNames)
+        //    {
+        //        var record = coordsAndValues.FirstOrDefault(
+        //            c => c.Key.Key.Equals(name, StringComparison.OrdinalIgnoreCase)).Key;
+        //        list.Add(new KeyValuePair<string, string>(record.Key, record.Value));
+        //    }
 
-            return list;
-        }
+        //    return list;
+        //}
 
         private void AddCells(ExcelWorksheet worksheet)
         {
@@ -256,5 +270,7 @@ namespace InvoicingSystem.Logic.ExcelCreation
             }
             //worksheet.Cells.AutoFitColumns();
         }
+
+        #endregion Methods
     }
 }

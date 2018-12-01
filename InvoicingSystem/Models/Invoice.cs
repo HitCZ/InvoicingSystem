@@ -1,7 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace InvoicingSystem.Models {
-    public class Invoice {
+namespace InvoicingSystem.Models
+{
+    public class Invoice
+    {
+        #region Properties
+
         public int Id { get; set; }
         public int IdContractor { get; set; }
         public int IdCustomer { get; set; }
@@ -16,8 +20,15 @@ namespace InvoicingSystem.Models {
         public string JobDescription { get; set; }
         public decimal Price { get; set; }
 
-        public override string ToString() {
+        #endregion Properties
+
+        #region Overriden Methods
+
+        public override string ToString()
+        {
             return InvoiceNumber.ToString();
         }
+
+        #endregion Overriden Methods
     }
 }

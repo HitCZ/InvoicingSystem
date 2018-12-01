@@ -1,9 +1,20 @@
-﻿namespace InvoicingSystem.Models {
-    public class Customer : Enterprenour{
+﻿namespace InvoicingSystem.Models
+{
+    public class Customer : Enterprenour
+    {
+        #region Properties
+
         public string CorporationName { get; set; }
 
-        public override string ToString() {
+        #endregion Properties
+
+        #region Overriden Methods
+
+        public override string ToString()
+        {
             return CorporationName;
         }
+
+        #endregion Overriden Methods
     }
 }

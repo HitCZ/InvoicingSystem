@@ -1,18 +1,19 @@
-﻿using InvoicingSystem.Data.Repositories;
-using InvoicingSystem.Data.Repositories.Interfaces;
+﻿using InvoicingSystem.Logic.Interfaces;
+using InvoicingSystem.Logic.Repositories;
+using InvoicingSystem.Logic.Repositories.Interfaces;
 
-namespace InvoicingSystem.Data {
+namespace InvoicingSystem.Logic {
     public class UnitOfWork : IUnitOfWork {
-        private readonly AppDbContext _context;
+        private readonly AppDbContext context;
 
         public UnitOfWork(AppDbContext context) {
-            _context = context;
+            this.context = context;
 
-            Addresses = new AddressRepository(_context);
-            Contractors = new ContractorRepository(_context);
-            Customers = new CustomerRepository(_context);
-            PaymentConditions = new PaymentConditionRepository(_context);
-            Invoices = new InvoiceRepository(_context, PaymentConditions);
+            Addresses = new AddressRepository(this.context);
+            Contractors = new ContractorRepository(this.context);
+            Customers = new CustomerRepository(this.context);
+            PaymentConditions = new PaymentConditionRepository(this.context);
+            Invoices = new InvoiceRepository(this.context, PaymentConditions);
         }
 
         public IAddressRepository Addresses { get; private set; }
@@ -25,11 +26,11 @@ namespace InvoicingSystem.Data {
         public IInvoiceRepository Invoices { get; set; }
 
         public int Complete() {
-            return _context.SaveChanges();
+            return context.SaveChanges();
         }
 
         public void Dispose() {
-            _context.Dispose();
+            context.Dispose();
         }
     }
 }

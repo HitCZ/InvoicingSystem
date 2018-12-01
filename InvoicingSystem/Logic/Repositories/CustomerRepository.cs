@@ -1,11 +1,11 @@
-﻿using InvoicingSystem.Data.Repositories.Interfaces;
-using InvoicingSystem.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using InvoicingSystem.Logic.Repositories.Interfaces;
+using InvoicingSystem.Models;
 
-namespace InvoicingSystem.Data.Repositories {
+namespace InvoicingSystem.Logic.Repositories {
     public class CustomerRepository : Repository<Customer>, ICustomerRepository {
         private readonly IEnumerable<Customer> allCustomers;
 
@@ -13,9 +13,7 @@ namespace InvoicingSystem.Data.Repositories {
             allCustomers = AppDbContext.Customers.Include(c => c.Address);
         }
 
-        public AppDbContext AppDbContext {
-            get { return _context as AppDbContext; }
-        }
+        public AppDbContext AppDbContext => Context as AppDbContext;
 
         public Customer GetCustomerByIN(int IN) {
             return allCustomers.FirstOrDefault(c => c.IN == IN);

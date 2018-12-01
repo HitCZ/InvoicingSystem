@@ -87,7 +87,6 @@
     </Compile>
     <Compile Include="Logic\AppDbContext.cs" />
     <Compile Include="Logic\Extensions\StringExtension.cs" />
-    <Compile Include="Logic\Mocks\AddressMock.cs" />
     <Compile Include="Logic\Repositories\AddressRepository.cs" />
     <Compile Include="Logic\Repositories\ContractorRepository.cs" />
     <Compile Include="Logic\Repositories\CustomerRepository.cs" />

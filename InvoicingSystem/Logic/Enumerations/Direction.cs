@@ -1,4 +1,4 @@
-﻿namespace InvoicingSystem.Data.Enumerations {
+﻿namespace InvoicingSystem.Logic.Enumerations {
     public enum Direction {
         Up,
         Down,

@@ -1,25 +1,26 @@
-﻿
-using InvoicingSystem.Data.Repositories.Interfaces;
-using InvoicingSystem.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using InvoicingSystem.Logic.Repositories.Interfaces;
+using InvoicingSystem.Models;
 
-namespace InvoicingSystem.Data.Repositories {
+namespace InvoicingSystem.Logic.Repositories {
     public class InvoiceRepository : Repository<Invoice>, IInvoiceRepository {
         private readonly IEnumerable<Invoice> allInvoices;
+        private readonly IPaymentConditionRepository paymentConditionRepository;
 
-        public InvoiceRepository(DbContext context, IPaymentConditionRepository condition) : base(context) {
+        public InvoiceRepository(DbContext context, IPaymentConditionRepository paymentConditionRepository) : base(context)
+        {
+            this.paymentConditionRepository = paymentConditionRepository;
             allInvoices = AppDbContext.Invoices
                 .Include(i => i.Contractor)
                 .Include(i => i.Customer)
                 .Include(i => i.PaymentCondition);
         }
 
-        public AppDbContext AppDbContext {
-            get { return _context as AppDbContext; }
-        }
+        public AppDbContext AppDbContext => Context as AppDbContext;
+
         public Invoice GetInvoiceByNumber(int n) {
             return allInvoices.FirstOrDefault(i => i.InvoiceNumber == n);
         }
@@ -46,7 +47,7 @@ namespace InvoicingSystem.Data.Repositories {
         }
 
         public IEnumerable<Invoice> GetInvoicesWithPrice(decimal price, IEnumerable<Invoice> filteredInvoices = null) {
-            return GetCorrectSet(filteredInvoices
+            return GetCorrectSet(filteredInvoices?
                    .Where(i => i.Price == price)).ToList();
         }
     }

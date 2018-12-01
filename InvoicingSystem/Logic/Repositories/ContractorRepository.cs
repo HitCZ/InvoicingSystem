@@ -1,11 +1,11 @@
-﻿using InvoicingSystem.Data.Repositories.Interfaces;
-using InvoicingSystem.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using InvoicingSystem.Logic.Repositories.Interfaces;
+using InvoicingSystem.Models;
 
-namespace InvoicingSystem.Data.Repositories {
+namespace InvoicingSystem.Logic.Repositories {
     public class ContractorRepository : Repository<Contractor>, IContractorRepository {
         private readonly IEnumerable<Contractor> allContractors;
 
@@ -13,11 +13,7 @@ namespace InvoicingSystem.Data.Repositories {
             allContractors = AppDbContext.Contractors.Include(c => c.Address);
         }
         
-        public AppDbContext AppDbContext {
-            get {
-                return _context as AppDbContext;
-            }
-        }
+        public AppDbContext AppDbContext => Context as AppDbContext;
 
         public Contractor GetContractorByIN(int n) {
             return allContractors.FirstOrDefault(c => c.IN == n);

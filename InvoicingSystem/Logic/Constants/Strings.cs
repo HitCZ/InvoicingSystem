@@ -2,6 +2,19 @@
 {
     public static class Strings
     {
+        #region Address
+
+        public const string DEFAULT_COUNTRY = "Česká republika";
+
+        #endregion Address
+
+        #region Payment Condition
+
+        public const string PAYMENT_METHOD_TRANSFER = "Převodem";
+        public const string PAYMENT_METHOD_CASH = "Hotově";
+
+        #endregion Payment Condition
+
         #region Invoice
 
         public const string WORKSHEET_NAME = "Faktura";
@@ -22,6 +35,7 @@
 
         // Customer section
         public const string CUSTOMER_CAPTION = "Odběratel";
+        // ReSharper disable once IdentifierTypo
         public const string CUSTOMER_VATIN_CAPTION = "DIČ";
 
         // Payment conditions section

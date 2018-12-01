@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace InvoicingSystem.Data.Repositories.Interfaces {
+namespace InvoicingSystem.Logic.Repositories.Interfaces {
     public interface IRepository<TEntity> where TEntity : class {
         TEntity Get(int id);
         IEnumerable<TEntity> GetAll();

@@ -1,8 +1,8 @@
-﻿using InvoicingSystem.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using InvoicingSystem.Models;
 
-namespace InvoicingSystem.Data.Repositories.Interfaces {
+namespace InvoicingSystem.Logic.Repositories.Interfaces {
     public interface IInvoiceRepository : IRepository<Invoice>{
         Invoice GetInvoiceByNumber(int n);
         IEnumerable<Invoice> GetInvoicesByContractor(Contractor contractor, IEnumerable<Invoice> invoices = null);

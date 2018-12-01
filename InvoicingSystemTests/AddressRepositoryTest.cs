@@ -3,13 +3,12 @@ using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using InvoicingSystem.Data.Repositories;
-using InvoicingSystem.Data;
 using InvoicingSystem.Models;
-using InvoicingSystem.Data.Repositories.Interfaces;
 using Moq;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using InvoicingSystem.Logic;
+using InvoicingSystem.Logic.Repositories.Interfaces;
 
 namespace InvoicingSystemTests {
     /// <summary>
