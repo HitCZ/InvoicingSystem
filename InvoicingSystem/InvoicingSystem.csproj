@@ -122,12 +122,12 @@
       <DependentUpon>201810141529354_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Logic\Models\Address.cs" />
-    <Compile Include="Logic\Models\Contractor.cs" />
-    <Compile Include="Logic\Models\Customer.cs" />
-    <Compile Include="Logic\Models\Enterprenour.cs" />
-    <Compile Include="Logic\Models\Invoice.cs" />
-    <Compile Include="Logic\Models\PaymentCondition.cs" />
+    <Compile Include="Models\Address.cs" />
+    <Compile Include="Models\Contractor.cs" />
+    <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Enterprenour.cs" />
+    <Compile Include="Models\Invoice.cs" />
+    <Compile Include="Models\PaymentCondition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

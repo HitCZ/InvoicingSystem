@@ -2,6 +2,8 @@
 {
     public static class Strings
     {
+        #region Invoice
+
         public const string WORKSHEET_NAME = "Faktura";
         public const string FONT = "Arial CE";
         public const string INVOICE_CAPTION = "Faktura";
@@ -41,5 +43,7 @@
         // Signature info
         public const string SIGNATURE_CAPTION = "Vystavil: ";
         public const string SIGNATURE = "Podpis: ";
+
+        #endregion Invoice
     }
 }
